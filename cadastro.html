@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Cadastro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #3b66a0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      background-color: #3b66a0;
+      width: 80%;
+      max-width: 900px;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+      color: #fff;
+    }
+
+    .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-section img {
+      width: 90%;
+      max-width: 350px;
+    }
+
+    .form-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      color: black;
+    }
+
+    label {
+      font-size: 1.3em;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 15px;
+      background-color: #d8d8d8;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px 30px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 10px;
+      background-color: #5b86b3;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #729fcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="image-section">
+      <img src="SiteChamados/imagens/cad.png" alt="Cadastro Ilustração">
+    </div>
+
+    <div class="form-section">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" placeholder="Digite seu nome">
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" placeholder="Digite seu e-mail">
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="Digite sua senha">
+
+      <button>Cadastrar</button>
+    </div>
+  </div>
+
+</body>
+</html>

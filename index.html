@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tela de Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #3b7c99;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      background-color: #3b7c99;
+      width: 80%;
+      max-width: 900px;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+      color: #fff;
+    }
+
+    .image-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-section img {
+      width: 90%;
+      max-width: 350px;
+    }
+
+    .login-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      color: black;
+    }
+
+    label {
+      font-size: 1.3em;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 15px;
+      background-color: #ddd;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px 30px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 5px;
+      background-color: #518aa5;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #639fbf;
+    }
+
+    .register-link {
+      margin-top: 15px;
+      font-size: 1em;
+      color: white;
+    }
+
+    .register-link a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="image-section">
+    <img src="SiteChamados/imagens/login.png" alt="Login Illustration">
+      
+    </div>
+
+    <div class="login-section">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" placeholder="Digite seu e-mail">
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="Digite sua senha">
+
+      <button>Entrar</button>
+
+      <div class="register-link">
+        Para criar uma conta: <a href="cadastro.html">Clique aqui</a>
+      </div>
+    </div>
+  </div>
+  
+
+</body>
+</html>
