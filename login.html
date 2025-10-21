@@ -53,7 +53,38 @@
       background-color: #d8d8d8;
       font-size: 1em;
     }
+    .btn-secondary {
+      padding: 5px 10px;
+      position: absolute;
+      right: 10px;
+      top: 32px;
+      background: transparent;
+      border: none;
+      color: #495057;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
+    .btn-secondary::before {
+      content: "👁";
+      font-size: 1.2em;
+    }
+
+    .btn-secondary:hover {
+      background: transparent;
+      color: #212529;
+    }
+
+    .form-group {
+      position: relative;
+    }
     button {
       padding: 10px 30px;
       font-size: 1.3em;
@@ -102,6 +133,17 @@
           <div class="form-group">
             <label for="senha">Senha</label>
             <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+            <button type="button" class="btn btn-secondary mt-2" onclick="togglePassword()"></button>
+            <script>
+            function togglePassword() {
+              var senhaInput = document.getElementById('senha');
+              if (senhaInput.type === 'password') {
+                senhaInput.type = 'text';
+              } else {
+                senhaInput.type = 'password';
+              }
+            }
+            </script>
           </div>
 
           <button type="submit" class="btn btn-primary">Entrar</button>
