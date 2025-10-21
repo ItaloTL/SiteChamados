@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela de Login</title>
+  <!-- Link do Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #3b7c99;
+      background-color: #3b66a0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -16,19 +18,16 @@
     }
 
     .container {
-      display: flex;
-      background-color: #3b7c99;
-      width: 80%;
-      max-width: 900px;
+      background: linear-gradient(135deg, #3c80c0, #0624aa);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
       border-radius: 10px;
-      align-items: center;
-      justify-content: space-between;
       padding: 40px;
       color: #fff;
+      max-width: 900px;
+      width: 80%;
     }
 
     .image-section {
-      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -40,11 +39,6 @@
     }
 
     .login-section {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
       color: black;
     }
 
@@ -55,28 +49,23 @@
     }
 
     input {
-      width: 90%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: none;
       border-radius: 15px;
-      background-color: #ddd;
+      background-color: #d8d8d8;
       font-size: 1em;
     }
 
     button {
       padding: 10px 30px;
       font-size: 1.3em;
-      border: none;
-      border-radius: 5px;
-      background-color: #518aa5;
+      border-radius: 10px;
+      background-color: #5b86b3;
       color: black;
       cursor: pointer;
       font-weight: bold;
     }
 
     button:hover {
-      background-color: #639fbf;
+      background-color: #729fcc;
     }
 
     .register-link {
@@ -97,28 +86,45 @@
   </style>
 </head>
 <body>
-
   <div class="container">
-    <div class="image-section">
-    <img src="SiteChamados/imagens/login.png" alt="Login Illustration">
-      
-    </div>
+    <div class="row">
+      <div class="col-md-6 image-section">
+        <img src="imagens/login.png" alt="Login Illustration">
+      </div>
 
-    <div class="login-section">
-      <label for="email">E-mail</label>
-      <input type="email" id="email" placeholder="Digite seu e-mail">
+      <div class="col-md-6 login-section">
+        <form>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail" required>
+          </div>
 
-      <label for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="Digite sua senha">
+          <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+          </div>
 
-      <button>Entrar</button>
+          <button type="submit" class="btn btn-primary">Entrar</button>
 
-      <div class="register-link">
-        Para criar uma conta: <a href="cadastro.html">Clique aqui</a>
+          <div class="register-link">
+            Para criar uma conta: <a href="cadastro.html">Clique aqui</a>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  
 
+  <!-- Link do Bootstrap JS e dependências (opcional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+  document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede o envio do formulário
+    window.location.href = 'index.html'; // Redireciona para a página index
+  });
+</script>
 </body>
 </html>
+
