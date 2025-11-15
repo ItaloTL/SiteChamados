@@ -16,6 +16,67 @@
             display: flex;
             min-height: 100vh;
             background-color: #f5f5f5;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Tema Escuro */
+        body.tema-escuro {
+            background-color: #1a1a1a;
+        }
+
+        body.tema-escuro .main-content {
+            background-color: #1a1a1a;
+        }
+
+        body.tema-escuro .card {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+        }
+
+        body.tema-escuro .card h3 {
+            color: #e0e0e0;
+        }
+
+        body.tema-escuro .card .count {
+            color: #3498db;
+        }
+
+        body.tema-escuro .form-container {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+        }
+
+        body.tema-escuro .form-title {
+            color: #e0e0e0;
+        }
+
+        body.tema-escuro .form-group label {
+            color: #e0e0e0;
+        }
+
+        body.tema-escuro .form-group select,
+        body.tema-escuro .form-group textarea {
+            background-color: #3c3c3c;
+            color: #e0e0e0;
+            border-color: #555;
+        }
+
+        body.tema-escuro .form-group select:focus,
+        body.tema-escuro .form-group textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        body.tema-escuro .header {
+            border-bottom-color: #444;
+        }
+
+        body.tema-escuro .header h2 {
+            color: #e0e0e0;
+        }
+
+        body.tema-escuro .user-info {
+            color: #999;
         }
 
         /* Menu Lateral */
@@ -204,10 +265,8 @@
             <h1>Sistema de Chamados</h1>
         </div>
         <ul class="menu">
-            <li class="active">Home</li>
-            <li>Criar um chamado</li>
-            <li>Chamados</li>
-            <li>Reservas</li>
+            <li class="active" onclick="navegarPara('index.html')">Home</li>
+            <li onclick="navegarPara('configuracoes.html')">Configurações</li>
         </ul>
     </div>
 
@@ -219,10 +278,8 @@
         </div>
 
         <div class="nav-tabs">
-            <div class="tab active">Home</div>
-            <div class="tab">Criar Chamado</div>
-            <div class="tab">Abertos</div>
-            <div class="tab">Pendentes</div>
+            <div class="tab active" onclick="navegarPara('index.html')">Home</div>
+            <div class="tab" onclick="navegarPara('abertos.html')">Abertos</div>
         </div>
 
         <div class="status-cards">
@@ -232,49 +289,178 @@
             </div>
             <div class="card">
                 <h3>Abertos</h3>
-                <div class="count">5</div>
+                <div class="count">0</div>
             </div>
             <div class="card">
                 <h3>Pendentes</h3>
-                <div class="count">3</div>
+                <div class="count">0</div>
             </div>
         </div>
 
         <div class="form-container">
             <h2 class="form-title">Criar Novo Chamado</h2>
-            <form>
+            <form id="form-chamado">
                 <div class="form-group">
                     <label for="tipo">Tipo</label>
-                    <select id="tipo">
-                        <option>Selecione o tipo</option>
-                        <option>Problema Técnico</option>
-                        <option>Dúvida</option>
-                        <option>Solicitação</option>
+                    <select id="tipo" name="tipo" required>
+                        <option value="">Selecione o tipo</option>
+                        <option value="Problema Técnico">Problema Técnico</option>
+                        <option value="Dúvida">Dúvida</option>
+                        <option value="Solicitação">Solicitação</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="urgencia">Urgência</label>
-                    <select id="urgencia">
-                        <option>Selecione a urgência</option>
-                        <option>Baixa</option>
-                        <option>Média</option>
-                        <option>Alta</option>
-                        <option>Urgente</option>
+                    <select id="urgencia" name="urgencia" required>
+                        <option value="">Selecione a urgência</option>
+                        <option value="Baixa">Baixa</option>
+                        <option value="Média">Média</option>
+                        <option value="Alta">Alta</option>
+                        <option value="Urgente">Urgente</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
-                    <textarea id="descricao" placeholder="Descreva o problema ou solicitação"></textarea>
+                    <textarea id="descricao" name="descricao" placeholder="Descreva o problema ou solicitação" required></textarea>
                 </div>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Salvar</button>
-                    <button type="button" class="btn btn-secondary">Cancelar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limparFormulario()">Cancelar</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+        // Sistema de Tema
+        function aplicarTema(tema) {
+            const body = document.body;
+            if (tema === 'escuro') {
+                body.classList.add('tema-escuro');
+            } else {
+                body.classList.remove('tema-escuro');
+            }
+            localStorage.setItem('tema', tema);
+        }
+
+        function carregarTema() {
+            const temaSalvo = localStorage.getItem('tema') || 'claro';
+            aplicarTema(temaSalvo);
+        }
+
+        // Carregar tema ao iniciar
+        carregarTema();
+
+        // Carregar contadores ao iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarContadores();
+        });
+
+        // Função de navegação
+        function navegarPara(pagina) {
+            window.location.href = pagina;
+        }
+
+        // Função para limpar formulário
+        function limparFormulario() {
+            document.getElementById('form-chamado').reset();
+        }
+
+        // Função para validar formulário
+        function validarFormulario() {
+            const tipo = document.getElementById('tipo').value;
+            const urgencia = document.getElementById('urgencia').value;
+            const descricao = document.getElementById('descricao').value.trim();
+
+            if (!tipo || tipo === '') {
+                alert('Por favor, selecione o tipo do chamado.');
+                return false;
+            }
+
+            if (!urgencia || urgencia === '') {
+                alert('Por favor, selecione a urgência do chamado.');
+                return false;
+            }
+
+            if (!descricao || descricao === '') {
+                alert('Por favor, preencha a descrição do chamado.');
+                return false;
+            }
+
+            if (descricao.length < 10) {
+                alert('A descrição deve ter pelo menos 10 caracteres.');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Função para salvar chamado no banco de dados
+        function salvarChamado(dados) {
+            const formData = new FormData();
+            formData.append('tipo', dados.tipo);
+            formData.append('urgencia', dados.urgencia);
+            formData.append('descricao', dados.descricao);
+
+            return fetch('php/salvar_chamado.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Chamado criado com sucesso!');
+                    limparFormulario();
+                    atualizarContadores();
+                } else {
+                    alert('Erro ao criar chamado: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao salvar chamado. Tente novamente.');
+            });
+        }
+
+        // Função para atualizar contadores de chamados
+        function atualizarContadores() {
+            fetch('php/contar_chamados.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const abertosElement = document.querySelector('.status-cards .card:nth-child(2) .count');
+                        const pendentesElement = document.querySelector('.status-cards .card:nth-child(3) .count');
+                        if (abertosElement) abertosElement.textContent = data.abertos;
+                        if (pendentesElement) pendentesElement.textContent = data.pendentes;
+                    }
+                })
+                .catch(error => console.error('Erro ao atualizar contadores:', error));
+        }
+
+        // Handler do formulário
+        document.getElementById('form-chamado').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validar formulário
+            if (!validarFormulario()) {
+                return;
+            }
+
+            // Preparar dados do chamado
+            const dadosChamado = {
+                tipo: document.getElementById('tipo').value,
+                urgencia: document.getElementById('urgencia').value,
+                descricao: document.getElementById('descricao').value.trim(),
+                data: new Date().toISOString(),
+                status: 'Aberto'
+            };
+
+            // Salvar chamado (será substituído por chamada ao backend)
+            salvarChamado(dadosChamado);
+        });
+    </script>
 </body>
 </html>

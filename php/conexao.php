@@ -1,18 +1,18 @@
 <?php
-//Informações para conectar no SGBD
+// Informações para conectar no SGBD
 $server = "localhost";
 $user = "root";
 $password = "admin";
 $database = "db_sistema_chamado";
 
+// Criar conexão
 $conexao = new mysqli($server, $user, $password, $database);
 
+// Verificar conexão
+if ($conexao->connect_error) {
+    die("Falha na conexão: " . $conexao->connect_error);
+}
 
-if ($conexao == false) {
-   echo "Falha na conexão!";
- 
-}
-if($conexao == true){
-    echo "Conectado com sucesso!";
-}
+// Definir charset para UTF-8
+$conexao->set_charset("utf8");
 ?>
