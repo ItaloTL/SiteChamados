@@ -3,7 +3,7 @@
 $server = "localhost";
 $user = "root";
 $password = "admin";
-$database = "db_sistema_chamado";
+$database = "chamados";
 
 // Criar conexão
 $conexao = new mysqli($server, $user, $password, $database);
