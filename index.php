@@ -275,6 +275,14 @@
         <div class="header">
             <h2>Home</h2>
             <div class="user-info">Usuário</div>
+            <?php
+                if(isset($_SESSION['id_ususario'])){
+                    echo "Olá, ".$SESSION['nm_usuario'];
+                }
+                else{
+                    echo "<script> alert('Você não está logado!') history.back(); </script>";
+                }
+            ?>
         </div>
 
         <div class="nav-tabs">

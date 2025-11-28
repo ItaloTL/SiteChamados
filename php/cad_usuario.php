@@ -30,7 +30,7 @@ if ($stmt === false) {
     echo "<script> alert('Erro ao preparar consulta: " . $conexao->error . "'); window.history.back(); </script>";
     exit;
 }
-$stmt->bind_param("sss", $nome, $email, $senhaHash);
+$stmt->bind_param("sss", $nome, $senhaHash, $email);
 
 if ($stmt->execute()) {
     echo "<script> alert('Usuário cadastrado com sucesso!'); window.location.href = '../index.html'; </script>";
