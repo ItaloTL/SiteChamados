@@ -54,16 +54,16 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (isset($_SESSION['cd_usuario'])) {
-    $usuarioId = $_SESSION['cd_usuario'];
+if (isset($_SESSION['id_usuario'])) {
+    $usuarioId = $_SESSION['id_usuario'];
 } else {
     // Se não houver usuário logado, buscar o primeiro usuário ou usar NULL
     // Isso permite testar o sistema sem login
-    $queryUsuario = "SELECT cd_usuario FROM usuario LIMIT 1";
+    $queryUsuario = "SELECT id_usuario FROM usuario LIMIT 1";
     $resultUsuario = $conexao->query($queryUsuario);
     if ($resultUsuario && $resultUsuario->num_rows > 0) {
         $rowUsuario = $resultUsuario->fetch_assoc();
-        $usuarioId = $rowUsuario['cd_usuario'];
+        $usuarioId = $rowUsuario['id _usuario'];
     } else {
         http_response_code(400);
         echo json_encode(['success' => false, 'message' => 'Nenhum usuário encontrado no sistema']);

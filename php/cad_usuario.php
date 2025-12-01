@@ -3,23 +3,23 @@
 $nome = trim($_POST['nome'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
-$confirmarSenha = $_POST['confirmarSenha'] ?? '';
+$confSenha = $_POST['confSenha'] ?? '';
 
 
 //incluir o arquivo de conexão
 include 'conexao.php';
 
-// validar campos obrigatórios
-// if (empty($nome) || empty($email) || empty($senha) || empty($confirmarSenha)) {
-//     echo "<script> alert('Por favor, preencha todos os campos.'); window.history.back(); </script>";
-//     exit;
-// }
+validar campos obrigatórios
+if (empty($nome) || empty($email) || empty($senha) || empty($confSenha)) {
+    echo "<script> alert('Por favor, preencha todos os campos.'); window.history.back(); </script>";
+    exit;
+}
 
-// verificar se as senhas coincidem
-// if ($senha !== $confirmarSenha) {
-//     echo "<script> alert('As senhas não coincidem.'); window.history.back(); </script>";
-//     exit;
-// }
+verificar se as senhas coincidem
+if ($senha !== $confSenha) {
+    echo "<script> alert('As senhas não coincidem.'); window.history.back(); </script>";
+    exit;
+}
 
 // hash da senha
 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
@@ -33,7 +33,7 @@ if ($stmt === false) {
 $stmt->bind_param("sss", $nome, $senhaHash, $email);
 
 if ($stmt->execute()) {
-    echo "<script> alert('Usuário cadastrado com sucesso!'); window.location.href = '../index.html'; </script>";
+    echo "<script> alert('Usuário cadastrado com sucesso!'); window.location.href = '../login.php'; </script>";
 } else {
     echo "<script> alert('Erro ao cadastrar usuário: " . $stmt->error . "'); window.history.back(); </script>";
 }
