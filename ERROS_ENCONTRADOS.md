@@ -1,18 +1,5 @@
 # Relatório de Erros Encontrados no Sistema
 
-## 🔴 Erros Críticos
-
-### 1. **index.html** - Falta session_start()
-**Problema:** Arquivo usa `$_SESSION` mas não inicia sessão
-**Solução:** Adicionar `session_start()` no início do arquivo, antes de qualquer uso de `$_SESSION`
-
-### 2. **php/login.php** - Múltiplos erros
-**Problema 1 (Linha 18):** `session_start()` está no lugar errado (deveria estar no início do arquivo, antes de qualquer uso de `$_SESSION`)
-
-**Problema 2 (Linha 7):** SQL Injection vulnerável
-```php
-$select = "SELECT * FROM usuario where email_usuario = '$email'";  // VULNERÁVEL
-```
 
 **Problema 3 (Linhas 13-14):** Acesso direto ao array sem verificar existência
 ```php
@@ -30,7 +17,6 @@ if ($email == $email_banco && $senha == $senha_banco){  // Senha em texto plano
 $_SESSION['id_usuario'] = $resultado['id_usuario'];  // Banco tem 'cd_usuario', não 'id_usuario'
 ```
 
-
 ## 📝 Erros Menores
 
 ### 7. **php/conexao.php** - Inconsistência de nome de banco
@@ -43,11 +29,9 @@ $_SESSION['id_usuario'] = $resultado['id_usuario'];  // Banco tem 'cd_usuario', 
 
 ## 🛠️ Resumo de Correções Necessárias
 
-1. ⚠️ Adicionar `session_start()` no início de index.html
-2. ⚠️ Mover `session_start()` para o início de login.php (antes de qualquer uso de sessão)
 3. ⚠️ Implementar prepared statements em login.php (corrigir SQL Injection)
 4. ⚠️ Adicionar verificação de existência de resultados em login.php (verificar se $resultado não é null)
 5. ⚠️ Implementar verificação de hash de senha em login.php (usar password_verify)
-6. ⚠️ Corrigir nome de coluna em login.php (usar 'cd_usuario' conforme banco de dados)
+
 7. ⚠️ Padronizar nome do banco de dados (verificar se é intencional)
 

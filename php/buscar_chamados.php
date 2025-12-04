@@ -23,6 +23,7 @@ $chamados = [];
 
 if ($tabelaChamado === 'chamado') {
     // Estrutura nova: busca direta com strings
+    
     $select = "SELECT c.id_chamado, c.tp_chamado, c.tp_urgencia, c.ds_chamado, c.st_chamado, 
                       c.dt_chamado, u.nm_usuario 
                FROM chamado c 

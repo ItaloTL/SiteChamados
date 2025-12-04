@@ -9,13 +9,13 @@ $confSenha = $_POST['confSenha'] ?? '';
 //incluir o arquivo de conexão
 include 'conexao.php';
 
-validar campos obrigatórios
+// validar campos obrigatórios
 if (empty($nome) || empty($email) || empty($senha) || empty($confSenha)) {
     echo "<script> alert('Por favor, preencha todos os campos.'); window.history.back(); </script>";
     exit;
 }
 
-verificar se as senhas coincidem
+// verificar se as senhas coincidem
 if ($senha !== $confSenha) {
     echo "<script> alert('As senhas não coincidem.'); window.history.back(); </script>";
     exit;

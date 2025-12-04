@@ -15,10 +15,10 @@ $senha_banco = $resultado['senha_usuario'];
 
 
 if ($email == $email_banco && $senha == $senha_banco){
-    session_start();
-    $_SESSION['id_usuario'] = $resultado['id_usuario'];
-    $_SESSION['nm_usuario'] = $resultado ['nm_usuario'];
-    header('location:../index.php');
+    
+    session_start(); $_SESSION['cd_usuario'] = $resultado['cd_usuario'];
+    session_start(); $_SESSION['nm_usuario'] = $resultado ['nm_usuario'];
+    header('location:../index.html');
 }else{
     echo "<script> alert('Usuário com a senha invalida!'); history.back(); </script>";
 }

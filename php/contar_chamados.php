@@ -20,7 +20,7 @@ if ($tabelaChamado === 'chamado') {
         COUNT(CASE WHEN st_chamado = 'Aberto' THEN 1 END) AS abertos,
         COUNT(CASE WHEN st_chamado = 'Pendente' OR st_chamado = 'Em andamento' THEN 1 END) AS pendentes,
         COUNT(*) AS total
-    FROM chamado";
+    FROM chamado WHERE 1=1";
 } else {
     // Estrutura antiga: contar da tabela chamados
     $select = "SELECT 
