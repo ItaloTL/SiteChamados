@@ -33,7 +33,7 @@ if ($stmt === false) {
 $stmt->bind_param("sss", $nome, $senhaHash, $email);
 
 if ($stmt->execute()) {
-    echo "<script> alert('Usuário cadastrado com sucesso!'); window.location.href = '../login.php'; </script>";
+    echo "<script> alert('Usuário cadastrado com sucesso!'); window.location.href = '../login.html'; </script>";
 } else {
     echo "<script> alert('Erro ao cadastrar usuário: " . $stmt->error . "'); window.history.back(); </script>";
 }
